@@ -3,6 +3,7 @@ import controllers.EmpleadoContoller;
 import controllers.Ejercicios;
 
 import models.Empleado;
+import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -20,29 +21,40 @@ public class App {
     private static void runMapExample() {
         System.out.println("\n----- Ejecutando ejemplo de Mapa -----");
         Mapa mapa = new Mapa();
-        mapa.hashMap(); 
+        mapa.hashMap();
         mapa.linkedhashMapa();
         mapa.treeMapa();
     }
 
     private static void runEmpleadoExample() {
-        EmpleadoContoller empleadoContoller = new EmpleadoContoller();
-        boolean result = empleadoContoller.addEmpleado(new Empleado(1, "Pablo", "Senior"));
+        EmpleadoContoller empleadoController = new EmpleadoContoller();
+        boolean result = empleadoController.addEmpleado(new Empleado(1, "Pablo", "Senior"));
         System.out.println("Ingreso " + result);
-        result = empleadoContoller.addEmpleado(new Empleado(2, "Pablo", "Senior"));
+        result = empleadoController.addEmpleado(new Empleado(2, "Pablo", "Senior"));
         System.out.println("Ingreso " + result);
 
         // Agregar empleados
-        empleadoContoller.addEmpleado(new Empleado(1, "Pablo", "Senior"));
-        empleadoContoller.addEmpleado(new Empleado(2, "Juan", "Senior"));
-        empleadoContoller.addEmpleado(new Empleado(3, "Andres", "Senior"));
-        
+        empleadoController.addEmpleado(new Empleado(1, "Pablo", "Senior"));
+        empleadoController.addEmpleado(new Empleado(2, "Juan", "Senior"));
+        empleadoController.addEmpleado(new Empleado(3, "Andres", "Senior"));
+
         // Mostrar solo los nombres
-        empleadoContoller.displayEmpleadosSoloNombres();
-            
+        empleadoController.displayEmpleadosSoloNombres();
     }
 
     private static void runEjercicios() {
-        
+        System.out.println("\nDeber anagramas y sumatorio");
+
+        // Test de anagramas
+        System.out.println("Test areAnagrams");
+        System.out.println(Ejercicios.areAnagrams("listen", "silent")); // true
+        System.out.println(Ejercicios.areAnagrams("hello", "bello"));   // false
+        System.out.println(Ejercicios.areAnagrams("triangle", "integral")); // true
+
+        // Test de sumatoriaDeDos
+        Ejercicios ejercicios = new Ejercicios();
+        System.out.println("\nTest sumatoriaDeDos");
+        System.out.println(Arrays.toString(ejercicios.sumatoriaDeDos(new int[]{9,2,3,6}, 5))); // [1, 2]
+        System.out.println(Arrays.toString(ejercicios.sumatoriaDeDos(new int[]{9,2,3,6}, 10))); // null
     }
 }
